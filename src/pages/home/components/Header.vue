@@ -2,7 +2,9 @@
   <div class="header">
     <div class="header-left"><span class="iconfont icon-back">&#xe624;</span></div>
     <div class="header-input"><span class="iconfont">&#xe632;</span>输入框</div>
+    <router-link to="/city">
     <div class="header-right">{{city}}<span class="iconfont icon-arrow">&#xe64a;</span></div>
+    </router-link>
   </div>
 </template>
 
@@ -29,7 +31,7 @@ export default {
       float: left
       text-align center
       .icon-back
-          font-size .20rem
+          font-size .4rem
     .header-input
       flex: 1
       background: #ffffff
@@ -44,8 +46,9 @@ export default {
     .header-right
       width: 1.24rem
       float: right
+      color #fff
       text-align center
       .icon-arrow
-        font-size .20rem
+        font-size .2rem
         text-align center
 </style>
