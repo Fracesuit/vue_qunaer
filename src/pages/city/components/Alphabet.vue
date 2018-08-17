@@ -1,7 +1,9 @@
 <template>
 <ul class="list">
-  <li class="item"  @click="handleLetterClick"
-      @touchstart="handleTouchStart"
+  <!--    @touchstart.prevent="handleTouchStart"
+  @click="handleLetterClick"  不是用onclick，因为会和touchstart事件冲突-->
+  <li class="item"
+      @touchstart.prevent="handleTouchStart"
       @touchmove="handleTouchMove"
       @touchend="handleTouchEnd"
       v-for="item of letters"
@@ -41,6 +43,7 @@ export default {
     },
     handleTouchStart (e) {
       this.touchStatus = true
+      this.handleLetterClick(e)
     },
     handleTouchMove (e) {
       if (this.touchStatus) {

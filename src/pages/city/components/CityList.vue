@@ -5,7 +5,7 @@
         <div class="title border-topbottom">当前城市</div>
         <div class="button-list">
           <div class="button-wrapper">
-           <!-- <div class="button">{{this.$store.state.city}}</div>-->
+            <!-- <div class="button">{{this.$store.state.city}}</div>-->
             <div class="button">{{this.currentCity}}</div>
           </div>
         </div>
@@ -17,8 +17,7 @@
             class="button-wrapper"
             v-for="item of hot"
             :key="item.id"
-            @click="handleSelectCity(item.name)"
-          >
+            @click="handleSelectCity(item.name)">
             <div class="button">{{item.name}}</div>
           </div>
         </div>
@@ -47,13 +46,25 @@
 
 <script>
 import Bscroll from 'better-scroll'
-import { mapState, mapMutations } from 'vuex'
+import {mapState, mapMutations} from 'vuex'
+
 export default {
   name: 'CityList',
   props: {
     hot: Array,
     cities: Object,
     letter: String
+  },
+  data () {
+    return {
+      options: {
+        scrollY: true, // 因为scrollY默认为true，其实可以省略
+        scrollX: false,
+        mouseWheel: true,
+        click: true,
+        taps: true
+      }
+    }
   },
   computed: {
     ...mapState({
@@ -70,7 +81,7 @@ export default {
     ...mapMutations(['changeCity'])
   },
   mounted () {
-    this.scroll = new Bscroll(this.$refs.wrapper)
+    this.scroll = new Bscroll(this.$refs.wrapper, this.options)
   },
   watch: {
     letter () {
@@ -90,9 +101,11 @@ export default {
       border-color: #ccc
     &:after
       border-color: #ccc
+
   .border-bottom
     &:before
       border-color: #ccc
+
   .list
     overflow: hidden
     position: absolute
