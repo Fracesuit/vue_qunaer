@@ -1,8 +1,8 @@
 <template>
   <div>
-    <router-link tag="div" to="/" class="header-abs" v-if="showAbs">
-      <div class="iconfont icon-abs-back">&#xe624;</div>
-    </router-link>
+  <!--  <router-link tag="div" to="/" class="header-abs" v-if="showAbs">-->
+      <div class="header-abs iconfont" @click="goBack"  v-if="showAbs">&#xe624;</div>
+   <!-- </router-link>-->
     <div class="header-fixed" v-else :style="opacityStyle">
       景点详情
       <router-link to="/">
@@ -31,6 +31,9 @@ export default {
         let opacity = scrollTop / 140
         this.opacityStyle.opacity = opacity
       }
+    },
+    goBack () {
+      window.history.go(-1)
     }
   },
   mounted () {
@@ -53,9 +56,8 @@ export default {
     line-height .8rem
     text-align: center
     background: rgba(0, 0, 0, .8)
-    .icon-abs-back
-      color #fff
-      font-size .4rem
+    color #fff
+    font-size .4rem
 
   .header-fixed
     z-index 1

@@ -1,15 +1,20 @@
 <template>
   <div class="header">
     城市选择
-    <router-link to="/">
-        <div class="iconfont header-back">&#xe624;</div>
-    </router-link>
+  <!--  <router-link to="/" >-->
+        <div class="iconfont header-back" @click="goBack">&#xe624;</div>
+   <!-- </router-link>-->
   </div>
 </template>
 
 <script>
 export default {
-  name: 'CityHeader'
+  name: 'CityHeader',
+  methods: {
+    goBack () {
+      window.history.go(-1)
+    }
+  }
 }
 </script>
 <style lang="stylus" scoped>
